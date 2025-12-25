@@ -1,7 +1,9 @@
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../structures)
+set(target test)
 
-file(GLOB test_sources "*.cpp")
+file(GLOB hdrs "*.h*")
+file(GLOB srcs "*.cpp")
 
-add_executable(runTests ${test_sources})
-target_link_libraries(runTests gtest gtest_main ${library})
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../gtest")
+
+add_executable(${target} ${srcs} ${hdrs})
+target_link_libraries(${target} gtest ${library})
